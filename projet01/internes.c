@@ -16,7 +16,7 @@
 /*-------------------------------------------------------------------------------
  * Macro pour éviter le warning "unused parameter" dans une version intermédiaire
  * -----------------------------------------------------------------------------*/
-#define UNUSED(x) (void)(x)
+//#define UNUSED(x) (void)(x)
 
 /*--------------------------------------------------------------------------
  * change directory
@@ -24,7 +24,27 @@
 static int mon_cd(char *rep)
 {
   // TODO : supprimer la ligne et compléter la procédure
-  UNUSED(rep);
+    if (rep==NULL) {
+      chdir(getenv("HOME"));
+    }
+    /*
+    else if (strcmp(rep,"..")==0) {
+      char* path = get_current_dir_name();
+      *strrchr(path,'/') = '\0';
+      chdir(path);
+    }*/
+    else {
+        int res = chdir(rep);
+        if (res==-1) {
+          if (errno==EACCES){
+            printf("Vous n'avez pas le droit d'accéder au répertoire %s\n", rep);
+          }
+          else if (errno==ENOENT){
+            printf("Le répertoire %s n'existe pas\n", rep);
+          }
+        }
+    }
+    //UNUSED(rep);
     return 1;
 }
 

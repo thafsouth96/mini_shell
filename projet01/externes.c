@@ -32,7 +32,18 @@
 static void execute_commande_dans_un_fils(job_t *job,int num_comm, ligne_analysee_t *ligne_analysee, struct sigaction *sig)
 {
   // TODO : supprimer les lignes suivantes et compléter la procédure
+
+  pid_t res_fork=1;
+
+  res_fork=fork();
+  if (res_fork==0) {
+    execvp(ligne_analysee->commandes[num_comm][0], ligne_analysee->commandes[num_comm]);
+
+  }
+  else job->pids[num_comm] = res_fork;
+
   UNUSED(job); UNUSED(num_comm); UNUSED(ligne_analysee); UNUSED(sig);
+
 
 }
 /*--------------------------------------------------------------------------
@@ -47,9 +58,8 @@ void executer_commandes(job_t *job, ligne_analysee_t *ligne_analysee, struct sig
   execute_commande_dans_un_fils(job,0,ligne_analysee, sig);
 
   // TODO : à compléter
+   waitpid(job->pids[0],NULL,0);
 
   // on ne se sert plus de la ligne : ménage
   *ligne_analysee->ligne='\0';
 }
-
-

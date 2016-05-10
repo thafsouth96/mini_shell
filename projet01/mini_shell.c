@@ -78,7 +78,7 @@ static void initialiser_gestion_signaux(struct sigaction *sig)
 static void affiche_invite(void)
 {
    // TODO à modifier : insérer le nom du répertoire courant
-   printf("> ");
+   printf("> %s", get_current_dir_name());
    fflush(stdout);
 }
 
