@@ -4,7 +4,7 @@
 /*--------------------------------------------------------------------------
  * header où sont définies des constantes
  * -----------------------------------------------------------------------*/
-#define NB_MAX_COMMANDES 3 // nb max de commandes sur une ligne
+#define NB_MAX_COMMANDES 1 // nb max de commandes sur une ligne
 #define NB_MAX_MOTS 30     // nb max de mots pour une commande
 #define NB_MAX_CAR 4096    // nb max de caractères dans une ligne
 

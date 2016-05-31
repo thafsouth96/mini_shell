@@ -31,7 +31,6 @@ typedef struct job_t
                                       // pids[p]==NON_UTILISE si le job n'a pas de pème fils
                                       // pids[p]==TERMINE si le pème fils s'est terminé
                                       // le job est en cours d'exécution si pids[0]!=NON_UTILISE
-  int mes_tubes[NB_MAX_COMMANDES][2];
 } job_t;
 
 /*--------------------------------------------------------------------------
